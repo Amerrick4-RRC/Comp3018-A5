@@ -24,7 +24,6 @@ app.use("/api-docs", cors(publicCorsOptions));
 
 // Authenticated endpoints - strict CORS
 app.use("/api/v1/events", cors(authenticatedCorsOptions));
-app.use("/api/v1/admin", cors(authenticatedCorsOptions));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
