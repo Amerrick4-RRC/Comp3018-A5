@@ -1,19 +1,22 @@
 import express, { Express } from "express";
-import setupSwagger from "./api/v1/config/swagger";
 import dotenv from "dotenv";
+dotenv.config();
+import setupSwagger from "../config/swagger";
+import helmet from "helmet";
+ 
+
 // import the event routes from the new routes file
 import eventRoutes from "./api/v1/routes/eventRoutes";
 
-dotenv.config();
-
+// Create the Express app
 const app: Express = express();
-
+// Middleware to parse JSON bodies
 app.use(express.json());
-
-// Route handler for events
+//Routes
 app.use("/api/v1", eventRoutes);
-
-// Setup Swagger
+// Security and CORS
+app.use(helmet());
+//Documentation
 setupSwagger(app);
 
 // Export the app
