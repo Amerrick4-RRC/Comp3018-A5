@@ -14,7 +14,7 @@
   "paths": {
     "/events": {
       "get": {
-        "summary": "Retrieve a list of events with optional filtering",
+        "summary": "Retrieve a list of events",
         "tags": [
           "Events"
         ],
