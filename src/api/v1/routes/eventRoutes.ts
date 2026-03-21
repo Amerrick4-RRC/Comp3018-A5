@@ -30,7 +30,7 @@ const router: Router = express.Router();
  *                 events:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/validations/Event'
+ *                     $ref: './models/event.yaml#/components/schemas/Event'
  *                 total:
  *                   type: integer
  *                 page:
@@ -86,7 +86,7 @@ router.get("/events", getEvents);
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/validations/Event'
+ *               $ref: './models/event.yaml#/components/schemas/Event'
  *       '400':
  *         description: Invalid input data
  *         content:

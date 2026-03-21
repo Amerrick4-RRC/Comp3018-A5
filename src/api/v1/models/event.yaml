@@ -1,0 +1,47 @@
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        date:
+          type: string
+          format: date-time
+        capacity:
+          type: number
+        registrationCount:
+          type: number
+        status:
+          type: string
+        category:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    CreateEvent:
+      type: object
+      required:
+        - name
+        - date
+        - capacity
+      properties:
+        name:
+          type: string
+        date:
+          type: string
+          format: date-time
+        capacity:
+          type: number
+        registrationCount:
+          type: number
+        status:
+          type: string
+        category:
+          type: string
