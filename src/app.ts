@@ -1,8 +1,10 @@
 import express, { Express } from "express";
 import setupSwagger from "./api/v1/config/swagger";
-
+import dotenv from "dotenv";
 // import the event routes from the new routes file
 import eventRoutes from "./api/v1/routes/eventRoutes";
+
+dotenv.config();
 
 const app: Express = express();
 
