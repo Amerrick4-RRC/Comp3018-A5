@@ -30,7 +30,29 @@ const router: Router = express.Router();
  *                 events:
  *                   type: array
  *                   items:
- *                     $ref: './models/event.yaml#/components/schemas/Event'
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                       name:
+ *                         type: string
+ *                       date:
+ *                         type: string
+ *                         format: date-time
+ *                       capacity:
+ *                         type: number
+ *                       registrationCount:
+ *                         type: number
+ *                       status:
+ *                         type: string
+ *                       category:
+ *                         type: string
+ *                       createdAt:
+ *                         type: string
+ *                         format: date-time
+ *                       updatedAt:
+ *                         type: string
+ *                         format: date-time
  *                 total:
  *                   type: integer
  *                 page:
@@ -69,30 +91,63 @@ router.get("/events", getEvents);
  *                 example: 100
  *               registrationCount:
  *                 type: integer
- *                 minimum: 0
- *                 default: 0
- *                 example: 50
+ *                 example: 0
  *               status:
  *                 type: string
- *                 enum: [active, cancelled, completed]
- *                 default: active
+ *                 example: "active"
  *               category:
  *                 type: string
- *                 enum: [general, sports, music, education]
- *                 default: general
+ *                 example: "general"
  *     responses:
  *       '201':
  *         description: Event created successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: './models/event.yaml#/components/schemas/Event'
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Event Created"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                       example: "A41zUY6bQdWkbaqDeNsO"
+ *                     name:
+ *                       type: string
+ *                     date:
+ *                       type: string
+ *                       format: date-time
+ *                     capacity:
+ *                       type: number
+ *                     registrationCount:
+ *                       type: number
+ *                     status:
+ *                       type: string
+ *                     category:
+ *                       type: string
+ *                     createdAt:
+ *                       type: string
+ *                       format: date-time
+ *                     updatedAt:
+ *                       type: string
+ *                       format: date-time
  *       '400':
  *         description: Invalid input data
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/validations/Error'
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Invalid input data"
+ *                 details:
+ *                   type: array
+ *                   items:
+ *                     type: string
  */
 router.post("/events",validateRequest(eventSchemas.create), createEvent);
 
@@ -115,10 +170,41 @@ router.post("/events",validateRequest(eventSchemas.create), createEvent);
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/validations/Event'
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                 name:
+ *                   type: string
+ *                 date:
+ *                   type: string
+ *                   format: date-time
+ *                 capacity:
+ *                   type: number
+ *                 registrationCount:
+ *                   type: number
+ *                 status:
+ *                   type: string
+ *                 category:
+ *                   type: string
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *                 updatedAt:
+ *                   type: string
+ *                   format: date-time
  *       '404':
  *         description: Event not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Event not found"
  */
+
 router.get("/events/:id",validateRequest(eventSchemas.getById), getSelectedEvent);
 
 /**
@@ -140,42 +226,85 @@ router.get("/events/:id",validateRequest(eventSchemas.getById), getSelectedEvent
  *         application/json:
  *           schema:
  *             type: object
- *             description: At least one field must be provided
- *             minProperties: 1
  *             properties:
  *               name:
  *                 type: string
- *                 minLength: 3
+ *                 example: "Updated Event Name"
  *               date:
  *                 type: string
  *                 format: date-time
+ *                 example: "2026-01-01T10:00:00Z"
  *               capacity:
- *                 type: integer
- *                 minimum: 5
+ *                 type: number
+ *                 example: 150
  *               registrationCount:
- *                 type: integer
- *                 minimum: 0
+ *                 type: number
+ *                 example: 10
  *               status:
  *                 type: string
- *                 enum: [active, cancelled, completed]
+ *                 example: "active"
  *               category:
  *                 type: string
- *                 enum: [general, sports, music, education]
+ *                 example: "general"
  *     responses:
  *       '200':
  *         description: Event updated successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/validations/Event'
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Event Updated"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     name:
+ *                       type: string
+ *                     date:
+ *                       type: string
+ *                       format: date-time
+ *                     capacity:
+ *                       type: number
+ *                     registrationCount:
+ *                       type: number
+ *                     status:
+ *                       type: string
+ *                     category:
+ *                       type: string
+ *                     createdAt:
+ *                       type: string
+ *                       format: date-time
+ *                     updatedAt:
+ *                       type: string
+ *                       format: date-time
  *       '400':
- *         description: Invalid input data
+ *         description: Invalid update data
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/validations/Error'
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Invalid input data"
+ *                 details:
+ *                   type: array
+ *                   items:
+ *                     type: string
  *       '404':
  *         description: Event not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Event not found"
  */
 router.put("/events/:id",validateRequest(eventSchemas.update), updateEventWithId);
 
