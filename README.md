@@ -35,7 +35,7 @@ The project was created to demonstrate the implementation of a secure and well-d
             SWAGGER_SERVER_URL=http://localhost:3000/api/v1
             ALLOWED_ORIGINS=http://localhost:3000,http://example.com
         }
-        
+
 ## Setup Instructions
 1. Clone the repository
     -- git clone https://github.com/Amerrick4-RRC/Comp3018-A5
@@ -80,6 +80,11 @@ postman request DELETE 'localhost:3000/api/v1/events/<event_id>' \
     "registrationCount": 200
     
 }'
+
+### Category and Status values
+    - Category values: 'conference', 'workshop', 'seminar', 'meetup', 'general' as a default.
+    - Status values: 'canceled', 'completed', 'active' as a default.
+
 ### Validation
 Fields are validated using Joi. Category and Stats fields must be one of the predefined values. Date must be a valid ISO date string. Capacity and registrationCount must be non-negative integers.
     -- Category values: 'conference', 'workshop', 'seminar', 'meetup', 'general' as a default.
