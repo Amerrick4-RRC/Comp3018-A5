@@ -32,16 +32,16 @@ The application uses the Helmet middleware to set various HTTP headers that enha
 ## Cors Configuration
 The application uses the CORS middleware to control cross-origin requests. Two different CORS policies are implemented:
 - **Public Endpoints**: For endpoints like `/api/v1/health` and `/api-docs`, a relaxed CORS policy is applied, allowing requests from any origin.
-    --`origin:"*"` allows all origins
-    --`methods:["GET"]` only read operations are allowed for public endpoints
-    --`allowedHeaders:["Content-Type"]` minimal headers allowed for public endpoints
-    --`credentials:false` no auth tokens allowed for public endpoints
-- **Authenticated Endpoints**: For endpoints like `/api/v1/events`, a strict CORS policy is applied, allowing requests only from specified origins defined in the `ALLOWED_ORIGINS` environment variable.
-    --`origin: ALLOWED_ORIGINS` defined list of allowed origins for authenticated endpoints
-    --`methods:["GET","POST","PUT","DELETE"]` all CRUD operations allowed for authenticated endpoints
-    --`allowedHeaders:["Content-Type","Authorization"]` auth tokens allowed for authenticated endpoints 
-    --`credentials:true` allows cookies and auth headers for authenticated endpoints
+    --`origin:"*"` allows all origins  
+    --`methods:["GET"]` only read operations are allowed for public endpoints  
+    --`allowedHeaders:["Content-Type"]` minimal headers allowed for public endpoints  
+    --`credentials:false` no auth tokens allowed for public endpoints  
+- **Authenticated Endpoints**: For endpoints like `/api/v1/events`, a strict CORS policy is applied, allowing requests only from specified origins defined in the `ALLOWED_ORIGINS` environment variable.  
+    --`origin: ALLOWED_ORIGINS` defined list of allowed origins for authenticated endpoints  
+    --`methods:["GET","POST","PUT","DELETE"]` all CRUD operations allowed for authenticated endpoints  
+    --`allowedHeaders:["Content-Type","Authorization"]` auth tokens allowed for authenticated endpoints   
+    --`credentials:true` allows cookies and auth headers for authenticated endpoints  
 - **Citations:
-    -- MDN Web Docs — CORS and public resources: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS (developer.mozilla.org in Bing)
+    -- MDN Web Docs — CORS and public resources: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS (developer.mozilla.org in Bing)  
     -- OWASP API Security Top 10 — APIs may expose public, unauthenticated endpoints safely when no sensitive data is involved: https://owasp.org/API-Security/ (owasp.org in Bing)
 
