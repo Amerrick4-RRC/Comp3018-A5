@@ -48,12 +48,23 @@ The project was created to demonstrate the implementation of a secure and well-d
 ## API Request Examples
 ### Get all events
 postman request 'localhost:3000/api/v1/events' \
-  --header 'Content-Type: application/json' \
-  --body '{
-    "name": "Test",
-    "date": "2027-12-29t09:00:00.000z",
-    "capacity": 200
-}'
+  --body ''
+
+Response:  
+  {
+    "Listing": [
+        {
+            "name": "ABCDE",
+            "date": "2026-12-25T09:00:00.000Z",
+            "capacity": 200,
+            "registrationCount": 0,
+            "status": "active",
+            "category": "general",
+            "createdAt": "2026-03-01T20:47:13.850Z",
+            "updatedAt": "2026-03-01T20:47:13.850Z",
+            "id": "4aGIZqiEoCppj779Q9B8"
+        },...
+
 ### Create a new event
 postman request POST 'localhost:3000/api/v1/events' \
   --header 'Content-Type: application/json' \
@@ -62,24 +73,61 @@ postman request POST 'localhost:3000/api/v1/events' \
     "date": "2027-12-29t09:00:00.000z",
     "capacity": 200
 }'
+
+Response:  
+  {
+    "message": "Event Created",
+    "data": {
+        "name": "Test",
+        "date": "2027-12-29T09:00:00.000Z",
+        "capacity": 200,
+        "registrationCount": 0,
+        "status": "active",
+        "category": "general",
+        "createdAt": "2026-03-22T20:01:26.755Z",
+        "updatedAt": "2026-03-22T20:01:26.755Z",
+        "id": "6HZTtuIBpp3dhrNRmjQd"
+    }
+
 ### Update an event
-postman request PUT 'localhost:3000/api/v1/events/<event_id>' \
+postman request PUT 'localhost:3000/api/v1/events/6HZTtuIBpp3dhrNRmjQd' \
   --header 'Content-Type: application/json' \
   --body '{
-    "name": "TestEvent",
-    "capacity": 300,
-    "registrationCount": 200
-    
+    "registrationCount": 100
 }'
+
+Response:  
+{
+    "update": {
+        "name": "Test",
+        "date": {
+            "_seconds": 1830070800,
+            "_nanoseconds": 0
+        },
+        "capacity": 200,
+        "status": "active",
+        "category": "general",
+        "createdAt": {
+            "_seconds": 1774209686,
+            "_nanoseconds": 755000000
+        },
+        "id": "6HZTtuIBpp3dhrNRmjQd",
+        "registrationCount": 100,
+        "updatedAt": {
+            "_seconds": 1774209881,
+            "_nanoseconds": 605000000
+        }
+    }
+}
+
 ### Delete an event
-postman request DELETE 'localhost:3000/api/v1/events/<event_id>' \
-  --header 'Content-Type: application/json' \
-  --body '{
-    "name": "TestEvent",
-    "capacity": 300,
-    "registrationCount": 200
-    
-}'
+postman request DELETE 'localhost:3000/api/v1/events/6HZTtuIBpp3dhrNRmjQd' \
+  --body ''
+
+Response:  
+{
+    "message": "Successful deletion of 6HZTtuIBpp3dhrNRmjQd"
+}
 
 ### Category and Status values
     - Category values: 'conference', 'workshop', 'seminar', 'meetup', 'general' as a default.
