@@ -25,6 +25,17 @@ The project was created to demonstrate the implementation of a secure and well-d
     -- `FIRESTORE_CLIENT_EMAIL`
     -- `FIRESTORE_PRIVATE_KEY`
     -- `ALLOWED_ORIGINS` (comma-separated list of allowed origins for authenticated endpoints)
+
+        {
+        NODE_ENV=development
+            PORT=3000
+            FIREBASE_PROJECT_ID=bed-demo-g3a74
+            FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nSOME_KEY\n-----END PRIVATE KEY-----\n"
+            FIREBASE_CLIENT_EMAIL=firebase-adminsdk-k9r4p@cloud-project-b7c31.iam.gserviceaccount.com
+            SWAGGER_SERVER_URL=http://localhost:3000/api/v1
+            ALLOWED_ORIGINS=http://localhost:3000,http://example.com
+        }
+        
 ## Setup Instructions
 1. Clone the repository
     -- git clone https://github.com/Amerrick4-RRC/Comp3018-A5
