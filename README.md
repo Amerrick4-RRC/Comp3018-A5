@@ -91,7 +91,7 @@ Fields are validated using Joi. Category and Stats fields must be one of the pre
     -- Stats values: 'canceled', 'completed', 'active' as a default.
 
 ## Documentation
-GitHub link to public API documentation: https://amerrick4-rrc.github.io/Comp3018-A5/
+GitHub link to public API documentation: https://amerrick4-rrc.github.io/Comp3018-A5/  
 Swagger UI is available at: http://localhost:3000/api-docs
 ## Author
 - Andrew Merrick
