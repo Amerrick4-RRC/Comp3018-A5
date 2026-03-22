@@ -213,10 +213,9 @@ export const eventSchemas = {
                 "number.min": "Event must be for at least 5 participants",
                 "number.positive": "Event capacity must be positive"
             }),
-            registrationCount: Joi.number().positive().max(Joi.ref("capacity")).messages({
+            registrationCount: Joi.number().positive().messages({
                 "any.required": "Registration count is required",
-                "number.positive": "Registration count must be a positive number",
-                "number.max": "Registration count cannot exceed the capacity"
+                "number.positive": "Registration count must be a positive number"
             }),
             status: Joi.string().valid(...Object.values(Status)).messages({
                 "any.required": "Event status is required",
