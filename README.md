@@ -1,11 +1,11 @@
-#Event Management API
+# Event Management API
 
-This is a CRUD API for managing events, built with Node.js, Express, and MongoDB. It provides endpoints for creating, retrieving, updating, and deleting events.
+This is a CRUD API for managing events, built with Node.js, Express, and a FireBase DB. It provides endpoints for creating, retrieving, updating, and deleting events.
 
 ## Features
 - Create, read, update, and delete events
 - Public endpoints for health checks and API documentation
-- CORS configuration for public and authenticated endpoints
+- CORS configuration for public and ALLOWED_ORIGINS endpoints
 - Helmet configuration for enhanced security
 - Comprehensive API documentation with Swagger
 - Joi validation for request data
