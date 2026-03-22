@@ -41,7 +41,7 @@ The application uses the CORS middleware to control cross-origin requests. Two d
     --`methods:["GET","POST","PUT","DELETE"]` all CRUD operations allowed for authenticated endpoints
     --`allowedHeaders:["Content-Type","Authorization"]` auth tokens allowed for authenticated endpoints 
     --`credentials:true` allows cookies and auth headers for authenticated endpoints
--Citations:
+- ##Citations:
     -- MDN Web Docs — CORS and public resources: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS (developer.mozilla.org in Bing)
     -- OWASP API Security Top 10 — APIs may expose public, unauthenticated endpoints safely when no sensitive data is involved: https://owasp.org/API-Security/ (owasp.org in Bing)
 
