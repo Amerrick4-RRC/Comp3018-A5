@@ -45,3 +45,21 @@ components:
           type: string
         category:
           type: string
+
+    Category:
+      type: string
+      enum:
+        - conference
+        - workshop
+        - meetup
+        - seminar
+        - general
+      default: general
+
+    Status:
+      type: string
+      enum:
+        - completed
+        - canceled
+        - active
+      default: active
