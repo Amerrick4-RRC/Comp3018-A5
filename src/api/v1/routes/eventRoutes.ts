@@ -15,6 +15,7 @@ import { authenticatedCorsOptions, publicCorsOptions } from "../../../../config/
 
 const router: Router = express.Router();
 
+// Applying route specific CORS policies
 router.use("/events", cors(authenticatedCorsOptions));
 router.use("/health", cors(publicCorsOptions));
 
