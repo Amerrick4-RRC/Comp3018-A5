@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { HealthCheckResponse } from "../models/healthCheck";
 import { HTTP_STATUS } from "../../../constants/httpConstants";
 import { createNewEvent, getByItemId, getAllItems as getAllEvents, deleteItemWithId, updateItemById } from "../services/eventServices"
-import { UpdateItem, CreateEvent } from "../models/eventStructure"
+import { CreateEvent } from "../models/eventStructure"
 
 
 export const getEvents = async (req: Request, res: Response) => {
@@ -51,7 +51,7 @@ export const createEvent = async (req: Request, res: Response) => {
 export const updateEventWithId = async (req: Request, res: Response): Promise<void> => {
     const id = req.params.id as string;
     try {
-        const change: Partial<UpdateItem> = req.body;
+        const change: Partial<CreateEvent> = req.body;
 
         let result = await updateItemById(id, change)
         res.status(HTTP_STATUS.OK).json({ update: result })

@@ -2,3 +2,4 @@ node_modules/
 dist/
 fbk.json
 eslint.config.js/
+.env

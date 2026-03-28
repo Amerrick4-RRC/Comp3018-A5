@@ -85,6 +85,11 @@ export const updateEvent = async (id: string, update: Partial<models.CreateEvent
             throw new Error("Event not found");
         }
 
+        const data = snapshot.data() as models.Event;
+        if(typeof update.registrationCount == "number" && update.registrationCount > data.capacity) {
+            throw new Error("Registration count cannot exceed capacity");
+        };
+        
         return {
             ...(snapshot.data() as models.Event),
             id: snapshot.id
