@@ -9,9 +9,14 @@ import {
 } from "../controllers/eventController";
 import { validateRequest } from "../middleware/validate";
 import { eventSchemas } from "../validation/eventSchemas"
+import cors from "cors";
+import { authenticatedCorsOptions, publicCorsOptions } from "../../../../config/corsConfig";
 
 
 const router: Router = express.Router();
+
+router.use("/events", cors(authenticatedCorsOptions));
+router.use("/health", cors(publicCorsOptions));
 
 /**
  * @openapi
@@ -149,7 +154,7 @@ router.get("/events", getEvents);
  *                   items:
  *                     type: string
  */
-router.post("/events",validateRequest(eventSchemas.create), createEvent);
+router.post("/events", validateRequest(eventSchemas.create), createEvent);
 
 /**
  * @openapi
@@ -205,7 +210,7 @@ router.post("/events",validateRequest(eventSchemas.create), createEvent);
  *                   example: "Event not found"
  */
 
-router.get("/events/:id",validateRequest(eventSchemas.getById), getSelectedEvent);
+router.get("/events/:id", validateRequest(eventSchemas.getById), getSelectedEvent);
 
 /**
  * @openapi
@@ -306,7 +311,7 @@ router.get("/events/:id",validateRequest(eventSchemas.getById), getSelectedEvent
  *                   type: string
  *                   example: "Event not found"
  */
-router.put("/events/:id",validateRequest(eventSchemas.update), updateEventWithId);
+router.put("/events/:id", validateRequest(eventSchemas.update), updateEventWithId);
 
 /**
  * @openapi
@@ -327,7 +332,7 @@ router.put("/events/:id",validateRequest(eventSchemas.update), updateEventWithId
  *       '404':
  *         description: Event not found
  */
-router.delete("/events/:id",validateRequest(eventSchemas.deleteById), deleteEventById);
+router.delete("/events/:id", validateRequest(eventSchemas.deleteById), deleteEventById);
 
 /**
  * @openapi
